@@ -42,7 +42,7 @@ const Team = () => {
         return (
           <Box
             width="60%"
-            m="0 auto"
+            m="0 0"
             p="5px"
             display="flex"
             justifyContent="center"
@@ -69,7 +69,10 @@ const Team = () => {
   const colors = tokens(theme.palette.mode);
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Manageing the Team Members" />
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Header title="TEAM" subtitle="Manageing the Team Members" />
+      </Box>
+
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -101,6 +104,7 @@ const Team = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.blueAccent[200]} !important`,
           },
+          
         }}
       >
         <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />

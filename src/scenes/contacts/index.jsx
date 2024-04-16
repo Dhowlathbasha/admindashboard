@@ -7,9 +7,11 @@ import { useTheme } from "@mui/material";
 
 const Contacts = () => {
   const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registar ID" },
+    { field: "registrarId", headerName: "Registrar ID" },
     {
       field: "name",
       headerName: "Name",
@@ -45,14 +47,17 @@ const Contacts = () => {
     },
     {
       field: "zipCode",
-      headerName: "ZipCode",
+      headerName: "Zip Code",
       flex: 1,
     },
   ];
-  const colors = tokens(theme.palette.mode);
+
   return (
     <Box m="20px">
-      <Header title="CONTACTS" subtitle="List of Contacts for Future Reference and Point of Contact" />
+      <Header
+        title="CONTACTS"
+        subtitle="List of Contacts for Future Reference"
+      />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -67,11 +72,7 @@ const Contacts = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-topContainer": {
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: colors.blueAccent[700],    
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
@@ -81,17 +82,25 @@ const Contacts = () => {
             borderTop: "none",
             backgroundColor: colors.blueAccent[700],
           },
-        //   "& .MuiCheckbox-root": {
-        //     color: `${colors.blueAccent[200]} !important`,
-        //   },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+          "& .MuiCheckbox-root": {
+            color: `${colors.greenAccent[200]} !important`,
+          },
+          "& .MuiDataGrid-toolbarContainer": {
+            color: `${colors.grey[100]} !important`,
+          },
+          "&.MuiButton-text": {
             color: `${colors.grey[100]} !important`,
           },
         }}
       >
-        <DataGrid rows={mockDataContacts} columns={columns} components={{Toolbar: GridToolbar }} />
+        <DataGrid
+          rows={mockDataContacts}
+          columns={columns}
+          components={{ Toolbar: GridToolbar }}
+        />
       </Box>
     </Box>
   );
 };
+
 export default Contacts;
