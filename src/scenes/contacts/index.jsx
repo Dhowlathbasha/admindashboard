@@ -62,6 +62,7 @@ const Contacts = () => {
         m="40px 0 0 0"
         height="75vh"
         sx={{
+
           "& .MuiDataGrid-root": {
             border: "none",
           },
@@ -71,8 +72,8 @@ const Contacts = () => {
           "& .name-column--cell": {
             color: colors.greenAccent[300],
           },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],    
+          "& .MuiDataGrid-columnHeader": {
+            backgroundColor: colors.blueAccent[700],
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
@@ -82,21 +83,21 @@ const Contacts = () => {
             borderTop: "none",
             backgroundColor: colors.blueAccent[700],
           },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.grey[100]} !important`,
+          },
           "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-          "& .MuiDataGrid-toolbarContainer": {
-            color: `${colors.grey[100]} !important`,
-          },
-          "&.MuiButton-text": {
-            color: `${colors.grey[100]} !important`,
+            color: `${colors.blueAccent[200]} !important`,
           },
         }}
       >
         <DataGrid
+          checkboxSelection
           rows={mockDataContacts}
           columns={columns}
-          components={{ Toolbar: GridToolbar }}
+          slots={{
+            toolbar: GridToolbar,
+          }}
         />
       </Box>
     </Box>

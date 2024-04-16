@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
@@ -69,9 +69,7 @@ const Team = () => {
   const colors = tokens(theme.palette.mode);
   return (
     <Box m="20px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="TEAM" subtitle="Manageing the Team Members" />
-      </Box>
 
       <Box
         m="40px 0 0 0"
@@ -86,7 +84,7 @@ const Team = () => {
           "& .name-column--cell": {
             color: colors.greenAccent[300],
           },
-          "& .MuiDataGrid-columnHeaders": {
+          "& .MuiDataGrid-columnHeader": {
             backgroundColor: colors.blueAccent[700],
             borderBottom: "none",
           },
@@ -104,10 +102,19 @@ const Team = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.blueAccent[200]} !important`,
           },
-          
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.grey[100]} !important`,
+          },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid
+          checkboxSelection
+          rows={mockDataTeam}
+          columns={columns}
+          slots={{
+            toolbar: GridToolbar,
+          }}
+        />
       </Box>
     </Box>
   );
